@@ -170,3 +170,13 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Deploy to Vercel
+
+Import this repository into Vercel and use the default settings:
+
+- Build command: `npm run build`
+- Install command: `npm install`
+- Output directory: leave empty
+
+The Vercel Nitro preset is configured in `vite.config.ts`, so server-side rendering and routing are emitted as Vercel functions during the build.
