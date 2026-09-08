@@ -37,10 +37,12 @@ const item = (list: TimelineItem[], id: string) => byId(list, id);
 const upperRows: TimelineRow[] = [
   { label: "2026", professional: [item(professional, "sigma")], creative: [item(creative, "primal")] },
   { label: "2023 – 2025", professional: [item(professional, "mondi-presales")], creative: [item(creative, "odyssey")] },
-  { label: "2020 – 2026", professional: [item(professional, "mondi-lead"), item(professional, "mondi-tw")] },
-  { label: "2018 – 2022", creative: [item(creative, "midnight"), item(creative, "youtube"), item(creative, "soulharbour")] },
-  { label: "2017", professional: [item(professional, "aleido-return")], creative: [item(creative, "thy-keeper")] },
-  { label: "2015 – 2017", professional: [item(professional, "aleido-coord"), item(professional, "aleido-tw"), item(professional, "morgan-shift"), item(professional, "morgan-rainbow"), item(professional, "morgan-cnc")], creative: [item(creative, "silent-ep"), item(creative, "silent-homes")] },
+  { label: "2022", professional: [item(professional, "mondi-lead")], creative: [item(creative, "soulharbour"), item(creative, "ak11")] },
+  { label: "2020", professional: [item(professional, "mondi-tw")], creative: [item(creative, "youtube")] },
+  { label: "2018", creative: [item(creative, "midnight")] },
+  { label: "2017", professional: [item(professional, "aleido-return")] },
+  { label: "2016", professional: [item(professional, "aleido-coord"), item(professional, "ohb-project")] },
+  { label: "2015", professional: [item(professional, "aleido-tw"), item(professional, "morgan-shift"), item(professional, "morgan-rainbow"), item(professional, "morgan-cnc")], creative: [item(creative, "silent-ep"), item(creative, "silent-homes")] },
   { label: "2013 – 2014", professional: [item(professional, "cnc-course")], creative: [item(creative, "nexus"), item(creative, "hnd-album"), item(creative, "infinity"), item(creative, "hnd-guitar")] },
 ];
 
@@ -57,6 +59,7 @@ const lowerRows: TimelineRow[] = [
 
 const upperRecentRows = upperRows.slice(0, 5);
 const upperEarlyRows = upperRows.slice(5);
+const thyKeeperRow: TimelineRow = { label: "Apr 2017", creative: [item(creative, "thy-keeper")] };
 
 const socialLinks = [
   { label: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/andrewklenhard/" },
@@ -83,9 +86,9 @@ function TimelineMatrix({ rows }: { rows: TimelineRow[] }) {
     <div className="relative">
       <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-accent/45" />
       <div className="relative">
-        {rows.map((row) => (
+        {rows.map((row, rowIndex) => (
           <div
-            key={row.label}
+            key={`${row.label}-${rowIndex}`}
             className="grid grid-cols-[minmax(0,1fr)_2.5rem_minmax(0,1fr)] items-center gap-x-3 py-8 sm:gap-x-6"
           >
             <div className="relative space-y-5 after:absolute after:top-1/2 after:-right-3 after:hidden after:h-px after:w-3 after:bg-accent/45 sm:after:block md:-mr-0 sm:after:-right-6 sm:after:w-6">
@@ -95,8 +98,8 @@ function TimelineMatrix({ rows }: { rows: TimelineRow[] }) {
             </div>
             <div className="relative z-10 flex h-full min-h-12 flex-col items-center justify-center gap-2">
               <span className="size-3 rounded-full border-2 border-accent bg-background shadow-[0_0_0_4px_var(--color-background),0_0_18px_var(--color-accent)]" />
-              <span className="font-display text-center text-[10px] tracking-[0.18em] text-accent uppercase [writing-mode:vertical-rl] sm:[writing-mode:horizontal-tb]">
-                {row.label}
+              <span className="font-display text-center text-[10px] tracking-[0.18em] text-accent uppercase">
+                {row.label.match(/\d{4}/)?.[0] ?? row.label.slice(0, 4)}
               </span>
             </div>
             <div className="relative space-y-5 before:absolute before:top-1/2 before:-left-3 before:hidden before:h-px before:w-3 before:bg-accent/45 sm:before:block md:-ml-0 sm:before:-left-6 sm:before:w-6">
@@ -117,13 +120,11 @@ function Index() {
       <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
           <div className="flex min-w-0 items-center gap-3">
-            <span
-              className="grid size-10 shrink-0 place-items-center rounded-full border-2 border-accent bg-accent font-display text-sm font-bold tracking-tight text-accent-foreground shadow-[0_0_18px_-6px_var(--color-accent)]"
-              role="img"
-              aria-label="AK monogram logo"
-            >
-              AK
-            </span>
+            <img
+              src="/favicon.png"
+              alt="AK monogram logo"
+              className="size-10 shrink-0 object-contain"
+            />
             <p className="font-display truncate text-lg leading-none font-bold tracking-[0.14em] uppercase">
               Endre Kulutácz
             </p>
@@ -190,29 +191,14 @@ function Index() {
                   {convergence.title}
                 </h2>
                 <p className="text-xs text-muted-foreground">{convergence.org}</p>
-                <p className="truncate text-[11px] leading-4 tracking-wide text-accent" title={convergence.tags.join(" ")}>
-                  {convergence.tags.join(" ")}
-                </p>
               </div>
-            </div>
-            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              {convergence.description}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {convergence.tags.map((t) => (
-                <span
-                  key={t}
-                  className="border border-accent/60 px-2 py-0.5 text-[11px] tracking-wide text-accent"
-                >
-                  {t}
-                </span>
-              ))}
             </div>
           </div>
         </section>
 
         {/* Unified chronological matrix — 2017 to 2013 */}
         <section className="mt-6">
+              <TimelineMatrix rows={[thyKeeperRow]} />
           <TimelineMatrix rows={upperEarlyRows} />
         </section>
 
