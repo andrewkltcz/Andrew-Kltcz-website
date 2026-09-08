@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Plane, ChevronsLeftRight, School } from "lucide-react";
-import logo from "@/assets/ak-logo.png.asset.json";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
 import { TimelineNode, TimelineSelectionProvider } from "@/components/TimelineNode";
 import { trunk, professional, creative, convergence } from "@/data/timeline";
 import type { TimelineItem } from "@/data/timeline";
@@ -48,11 +48,11 @@ const earlyCreative = [
 ];
 
 const socialLinks = [
-  { label: "Facebook", shortLabel: "f", href: "https://www.facebook.com/andrewklenhard/" },
-  { label: "LinkedIn", shortLabel: "in", href: "https://www.linkedin.com/in/endre-kulutacz-89164011a/" },
-  { label: "Instagram", shortLabel: "ig", href: "https://www.instagram.com/andrew.unwritten" },
-  { label: "YouTube Playlists", shortLabel: "yt", href: "https://www.youtube.com/@andewkltcz/playlists" },
-  { label: "TikTok", shortLabel: "tk", href: "https://www.tiktok.com/@andrew.kltcz" },
+  { label: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/andrewklenhard/" },
+  { label: "LinkedIn", icon: FaLinkedinIn, href: "https://www.linkedin.com/in/endre-kulutacz-89164011a/" },
+  { label: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/andrew.unwritten" },
+  { label: "YouTube Playlists", icon: FaYoutube, href: "https://www.youtube.com/@andewkltcz/playlists" },
+  { label: "TikTok", icon: FaTiktok, href: "https://www.tiktok.com/@andrew.kltcz" },
 ];
 
 function ColumnHeading({ label, side }: { label: string; side: "left" | "right" }) {
@@ -73,7 +73,13 @@ function Index() {
       <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
           <div className="flex min-w-0 items-center gap-3">
-            <img src={logo.url} alt="Endre Kulutácz logo" className="size-10 shrink-0 dark:invert" />
+            <span
+              className="grid size-10 shrink-0 place-items-center rounded-full border-2 border-accent bg-accent font-display text-sm font-bold tracking-tight text-accent-foreground shadow-[0_0_18px_-6px_var(--color-accent)]"
+              role="img"
+              aria-label="AK monogram logo"
+            >
+              AK
+            </span>
             <p className="font-display truncate text-lg leading-none font-bold tracking-[0.14em] uppercase">
               Endre Kulutácz
             </p>
@@ -108,9 +114,9 @@ function Index() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={social.label}
-                className="grid size-10 place-items-center border border-border font-display text-xs font-bold tracking-wider text-muted-foreground transition-all hover:-translate-y-1 hover:border-accent hover:text-accent hover:shadow-[0_0_18px_-6px_var(--color-accent)]"
+                className="group grid size-10 place-items-center border border-border text-muted-foreground transition-all hover:-translate-y-1 hover:border-accent hover:text-accent hover:shadow-[0_0_18px_-6px_var(--color-accent)]"
               >
-                {social.shortLabel}
+                <social.icon className="size-4.5 transition-transform group-hover:scale-110" aria-hidden="true" />
               </a>
             ))}
           </div>
