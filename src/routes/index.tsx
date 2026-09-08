@@ -40,10 +40,9 @@ const item = (list: TimelineItem[], id: string) => byId(list, id);
 const upperRows: TimelineRow[] = [
   { label: "2026", professional: [item(professional, "sigma")], creative: [item(creative, "primal")] },
   { label: "2023 – 2025", professional: [item(professional, "mondi-presales")], creative: [item(creative, "odyssey")] },
-  { label: "2022", professional: [item(professional, "mondi-lead")], creative: [item(creative, "soulharbour"), item(creative, "ak11")] },
-  { label: "2020", professional: [item(professional, "mondi-tw")], creative: [item(creative, "youtube")] },
+  { label: "2022", creative: [item(creative, "soulharbour"), item(creative, "ak11")] },
+  { label: "2020", professional: [item(professional, "mondi-lead"), item(professional, "mondi-tw")], creative: [item(creative, "youtube")] },
   { label: "2018", creative: [item(creative, "midnight")] },
-  { label: "2017", professional: [item(professional, "aleido-return")], creative: [item(creative, "thy-keeper")] },
   { label: "2016", professional: [item(professional, "aleido-coord"), item(professional, "ohb-project")] },
   { label: "2015", professional: [item(professional, "aleido-tw"), item(professional, "morgan-shift"), item(professional, "morgan-rainbow"), item(professional, "morgan-cnc")], creative: [item(creative, "silent-ep"), item(creative, "silent-homes")] },
   { label: "2013 – 2014", professional: [item(professional, "cnc-course")], creative: [item(creative, "nexus"), item(creative, "hnd-album"), item(creative, "infinity")] },
@@ -63,6 +62,8 @@ const lowerRows: TimelineRow[] = [
 
 const upperRecentRows = upperRows.slice(0, 5);
 const upperEarlyRows = upperRows.slice(5);
+const rejoinedAleidoRow: TimelineRow = { label: "2017", professional: [item(professional, "aleido-return")] };
+const thyKeeperRow: TimelineRow = { label: "2017", creative: [item(creative, "thy-keeper")] };
 
 const socialLinks = [
   { label: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/andrewklenhard/" },
@@ -193,6 +194,7 @@ function Index() {
             <ColumnHeading label="Creative Path" side="right" />
           </div>
           <TimelineMatrix rows={upperRecentRows} />
+          <TimelineMatrix rows={[rejoinedAleidoRow]} />
         </section>
 
         {/* Convergence bridge — 2017 Wales */}
@@ -217,6 +219,7 @@ function Index() {
 
         {/* Unified chronological matrix — 2017 to 2013 */}
         <section className="mt-6">
+          <TimelineMatrix rows={[thyKeeperRow]} />
           <TimelineMatrix rows={upperEarlyRows} />
         </section>
 
