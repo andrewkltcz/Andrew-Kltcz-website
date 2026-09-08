@@ -33,6 +33,9 @@ export function TimelineNode({ item, align = "center" }: Props) {
   const selection = useContext(TimelineSelectionContext);
   const [localOpen, setLocalOpen] = useState(false);
   const open = selection ? selection.openId === item.id : localOpen;
+  const titleParts = item.title.split(" — ");
+  const entity = item.org ?? (titleParts.length > 1 ? titleParts[0] : "Personal milestone");
+  const primaryTitle = item.org ? item.title : titleParts.slice(1).join(" — ") || item.title;
   const toggleOpen = () => {
     if (selection) {
       selection.setOpenId((current) => (current === item.id ? null : item.id));
@@ -63,12 +66,19 @@ export function TimelineNode({ item, align = "center" }: Props) {
           <span className="grid size-9 shrink-0 place-items-center bg-accent text-accent-foreground">
             <NodeIcon name={item.icon} className="size-4.5" />
           </span>
-          <div className="min-w-0">
-            <p className="font-display text-xs tracking-[0.22em] text-accent">{item.date}</p>
-            <h3 className="font-display text-base leading-tight font-semibold text-foreground uppercase">
-              {item.title}
+          <div className="min-w-0 flex-1 space-y-0.5">
+            <p className="font-display truncate text-xs leading-4 tracking-[0.22em] text-accent">
+              {item.date}
+            </p>
+            <h3 className="font-display truncate text-base leading-5 font-semibold text-foreground uppercase">
+              {primaryTitle}
             </h3>
-            {item.org && <p className="text-xs text-muted-foreground">{item.org}</p>}
+            <p className="truncate text-xs leading-4 text-muted-foreground">
+              {entity}
+            </p>
+            <p className="truncate text-[11px] leading-4 tracking-wide text-accent" title={item.tags.join(" ")}>
+              {item.tags.join(" ")}
+            </p>
           </div>
         </div>
       </button>
@@ -82,16 +92,6 @@ export function TimelineNode({ item, align = "center" }: Props) {
         <div className="overflow-hidden">
           <div className="clip-corner border border-accent/40 bg-popover p-4">
             <p className="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {item.tags.map((t) => (
-                <span
-                  key={t}
-                  className="border border-accent/50 px-2 py-0.5 text-[11px] tracking-wide text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
             {item.links && item.links.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-2">
                 {item.links.map((l) => (
