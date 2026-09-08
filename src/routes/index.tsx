@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Plane } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
+import logo from "@/assets/AK_logo_White.png";
+import cvFile from "@/assets/CV_ENG_Kulutacz_Endre.pdf";
+import coverLetterFile from "@/assets/Cover_Letter_ENG_Kulutacz_Endre.pdf";
 import { TimelineNode, TimelineSelectionProvider } from "@/components/TimelineNode";
 import { trunk, professional, creative, convergence } from "@/data/timeline";
 import type { TimelineItem } from "@/data/timeline";
@@ -40,10 +43,11 @@ const upperRows: TimelineRow[] = [
   { label: "2022", professional: [item(professional, "mondi-lead")], creative: [item(creative, "soulharbour"), item(creative, "ak11")] },
   { label: "2020", professional: [item(professional, "mondi-tw")], creative: [item(creative, "youtube")] },
   { label: "2018", creative: [item(creative, "midnight")] },
-  { label: "2017", professional: [item(professional, "aleido-return")] },
+  { label: "2017", professional: [item(professional, "aleido-return")], creative: [item(creative, "thy-keeper")] },
   { label: "2016", professional: [item(professional, "aleido-coord"), item(professional, "ohb-project")] },
   { label: "2015", professional: [item(professional, "aleido-tw"), item(professional, "morgan-shift"), item(professional, "morgan-rainbow"), item(professional, "morgan-cnc")], creative: [item(creative, "silent-ep"), item(creative, "silent-homes")] },
-  { label: "2013 – 2014", professional: [item(professional, "cnc-course")], creative: [item(creative, "nexus"), item(creative, "hnd-album"), item(creative, "infinity"), item(creative, "hnd-guitar")] },
+  { label: "2013 – 2014", professional: [item(professional, "cnc-course")], creative: [item(creative, "nexus"), item(creative, "hnd-album"), item(creative, "infinity")] },
+  { label: "2012", creative: [item(creative, "hnd-guitar")] },
 ];
 
 const lowerRows: TimelineRow[] = [
@@ -59,7 +63,6 @@ const lowerRows: TimelineRow[] = [
 
 const upperRecentRows = upperRows.slice(0, 5);
 const upperEarlyRows = upperRows.slice(5);
-const thyKeeperRow: TimelineRow = { label: "Apr 2017", creative: [item(creative, "thy-keeper")] };
 
 const socialLinks = [
   { label: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/andrewklenhard/" },
@@ -121,7 +124,7 @@ function Index() {
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
           <div className="flex min-w-0 items-center gap-3">
             <img
-              src="/favicon.png"
+              src={logo}
               alt="AK monogram logo"
               className="size-10 shrink-0 object-contain"
             />
@@ -144,10 +147,10 @@ function Index() {
           <p className="font-display mt-4 text-[11px] tracking-[0.3em] text-muted-foreground uppercase sm:text-xs">
             Project Management | Creativity | Technology
           </p>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-5 max-w-2xl text-justify text-sm leading-relaxed text-muted-foreground">
             For over a decade, my career has bridged technical execution, team leadership,
             documentation, and multimedia creation. I build connections between complex systems and
-            human experience—navigating a professional path through technical writing, AI project
+            human experience, navigating a professional path through technical writing, AI project
             management, and engineering workflows, running parallel to a life of music, visual arts,
             and media production.
           </p>
@@ -164,6 +167,22 @@ function Index() {
                 <social.icon className="size-4.5 transition-transform group-hover:scale-110" aria-hidden="true" />
               </a>
             ))}
+          </div>
+          <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href={cvFile}
+              download="CV_ENG_Kulutacz_Endre.pdf"
+              className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
+            >
+              Download CV
+            </a>
+            <a
+              href={coverLetterFile}
+              download="Cover_Letter_ENG_Kulutacz_Endre.pdf"
+              className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
+            >
+              Download Cover Letter
+            </a>
           </div>
         </section>
 
@@ -198,7 +217,6 @@ function Index() {
 
         {/* Unified chronological matrix — 2017 to 2013 */}
         <section className="mt-6">
-              <TimelineMatrix rows={[thyKeeperRow]} />
           <TimelineMatrix rows={upperEarlyRows} />
         </section>
 
