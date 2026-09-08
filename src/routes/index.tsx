@@ -24,28 +24,40 @@ export const Route = createFileRoute("/")({
 
 const byId = (list: TimelineItem[], id: string) => list.find((i) => i.id === id)!;
 
-const proSplit = professional.findIndex((i) => i.id === "aleido-return");
-const creSplit = creative.findIndex((i) => i.id === "midnight");
-const creEarlyEnd = creative.findIndex((i) => i.id === "hnd-guitar");
-
-const proRecent = professional.slice(proSplit).slice().reverse();
-const creRecent = creative.slice(creSplit).slice().reverse();
-const proEarly = professional.slice(0, proSplit).slice().reverse();
-const creEarly = creative.slice(creEarlyEnd, creSplit).slice().reverse();
-
 const university = byId(trunk, "university");
-const bottomTrunk: TimelineItem[] = [
-  byId(trunk, "highschool"),
-  byId(trunk, "primary"),
+
+type TimelineRow = {
+  label: string;
+  professional?: TimelineItem[];
+  creative?: TimelineItem[];
+};
+
+const item = (list: TimelineItem[], id: string) => byId(list, id);
+
+const upperRows: TimelineRow[] = [
+  { label: "2026", professional: [item(professional, "next"), item(professional, "sigma")], creative: [item(creative, "primal")] },
+  { label: "2023 – 2025", professional: [item(professional, "mondi-presales")], creative: [item(creative, "mv-2023")] },
+  { label: "2022", creative: [item(creative, "soulharbour"), item(creative, "digital-art"), item(creative, "blender")] },
+  { label: "2020", professional: [item(professional, "mondi-lead"), item(professional, "mondi-tw")], creative: [item(creative, "mv-2020")] },
+  { label: "2018 – 2019", creative: [item(creative, "youtube"), item(creative, "midnight")] },
+  { label: "2017", professional: [item(professional, "aleido-return")], creative: [item(creative, "thy-keeper")] },
+  { label: "2016", professional: [item(professional, "aleido-coord"), item(professional, "aleido-ohb"), item(professional, "aleido-tw")] },
+  { label: "2015", professional: [item(professional, "morgan-shift"), item(professional, "morgan-rainbow"), item(professional, "morgan-cnc")], creative: [item(creative, "silent-ep"), item(creative, "silent-homes")] },
+  { label: "2013 – 2014", professional: [item(professional, "matro")], creative: [item(creative, "hybrid-live"), item(creative, "nexus"), item(creative, "hnd-album"), item(creative, "infinity"), item(creative, "hnd-vocals")] },
 ];
 
-const earlyCreative = [
-  byId(creative, "photo"),
-  byId(creative, "piano"),
-  byId(creative, "guitar"),
-  byId(creative, "poetry"),
-  byId(creative, "drawing"),
+const lowerRows: TimelineRow[] = [
+  { label: "2010", professional: [item(trunk, "highschool")] },
+  { label: "2009", creative: [item(creative, "photo")] },
+  { label: "2008", creative: [item(creative, "piano")] },
+  { label: "2007", creative: [item(creative, "guitar")] },
+  { label: "2005", professional: [item(trunk, "primary")] },
+  { label: "2004", creative: [item(creative, "poetry")] },
+  { label: "1998", creative: [item(creative, "drawing")] },
 ];
+
+const upperRecentRows = upperRows.slice(0, 5);
+const upperEarlyRows = upperRows.slice(5);
 
 const socialLinks = [
   { label: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/andrewklenhard/" },
@@ -63,6 +75,39 @@ function ColumnHeading({ label, side }: { label: string; side: "left" | "right" 
         {label}
       </h2>
       <span className="h-px flex-1 bg-border" />
+    </div>
+  );
+}
+
+function TimelineMatrix({ rows }: { rows: TimelineRow[] }) {
+  return (
+    <div className="relative">
+      <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-accent/45" />
+      <div className="relative">
+        {rows.map((row) => (
+          <div
+            key={row.label}
+            className="grid grid-cols-[minmax(0,1fr)_2.5rem_minmax(0,1fr)] items-center gap-x-3 py-8 sm:gap-x-6"
+          >
+            <div className="relative space-y-5 after:absolute after:top-1/2 after:-right-3 after:hidden after:h-px after:w-3 after:bg-accent/45 sm:after:block md:-mr-0 sm:after:-right-6 sm:after:w-6">
+              {row.professional?.map((timelineItem) => (
+                <TimelineNode key={timelineItem.id} item={timelineItem} align="left" />
+              ))}
+            </div>
+            <div className="relative z-10 flex h-full min-h-12 flex-col items-center justify-center gap-2">
+              <span className="size-3 rounded-full border-2 border-accent bg-background shadow-[0_0_0_4px_var(--color-background),0_0_18px_var(--color-accent)]" />
+              <span className="font-display text-center text-[10px] tracking-[0.18em] text-accent uppercase [writing-mode:vertical-rl] sm:[writing-mode:horizontal-tb]">
+                {row.label}
+              </span>
+            </div>
+            <div className="relative space-y-5 before:absolute before:top-1/2 before:-left-3 before:hidden before:h-px before:w-3 before:bg-accent/45 sm:before:block md:-ml-0 sm:before:-left-6 sm:before:w-6">
+              {row.creative?.map((timelineItem) => (
+                <TimelineNode key={timelineItem.id} item={timelineItem} align="right" />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -122,24 +167,13 @@ function Index() {
           </div>
         </section>
 
-        {/* Dual columns — present back to late 2017 */}
-        <section className="mt-4 grid gap-10 md:grid-cols-2 md:gap-8">
-          <div className="relative md:border-r md:border-border md:pr-8">
+        {/* Unified chronological matrix — present to 2018 */}
+        <section className="mt-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6">
             <ColumnHeading label="Professional Path" side="left" />
-            <div className="space-y-5">
-              {proRecent.map((item) => (
-                <TimelineNode key={item.id} item={item} align="left" />
-              ))}
-            </div>
-          </div>
-          <div className="relative md:pl-8">
             <ColumnHeading label="Creative Path" side="right" />
-            <div className="space-y-5">
-              {creRecent.map((item) => (
-                <TimelineNode key={item.id} item={item} align="right" />
-              ))}
-            </div>
           </div>
+          <TimelineMatrix rows={upperRecentRows} />
         </section>
 
         {/* Convergence bridge — 2017 Wales */}
@@ -178,22 +212,9 @@ function Index() {
           </div>
         </section>
 
-        {/* Dual paths — 2013 back to 2012 */}
-        <section className="mt-14 grid gap-10 md:grid-cols-2 md:gap-8">
-          <div className="relative md:border-r md:border-border md:pr-8">
-            <div className="space-y-5">
-              {proEarly.map((item) => (
-                <TimelineNode key={item.id} item={item} align="left" />
-              ))}
-            </div>
-          </div>
-          <div className="relative md:pl-8">
-            <div className="space-y-5">
-              {creEarly.map((item) => (
-                <TimelineNode key={item.id} item={item} align="right" />
-              ))}
-            </div>
-          </div>
+        {/* Unified chronological matrix — 2017 to 2013 */}
+        <section className="mt-6">
+          <TimelineMatrix rows={upperEarlyRows} />
         </section>
 
         {/* Common university node */}
@@ -246,22 +267,9 @@ function Index() {
           </div>
         </section>
 
-        {/* Parallel paths — 1990 to 2010 */}
-        <section className="relative mt-10 grid gap-10 pb-6 md:grid-cols-2 md:gap-8">
-          <div className="relative md:border-r md:border-border md:pr-8">
-            <div className="space-y-5">
-            {bottomTrunk.map((item) => (
-              <TimelineNode key={item.id} item={item} align="left" />
-            ))}
-            </div>
-          </div>
-          <div className="relative md:pl-8">
-            <div className="space-y-5">
-              {earlyCreative.map((item) => (
-                <TimelineNode key={item.id} item={item} align="right" />
-              ))}
-            </div>
-          </div>
+        {/* Unified chronological matrix — 2010 to 1998 */}
+        <section className="relative mt-10 pb-6">
+          <TimelineMatrix rows={lowerRows} />
         </section>
 
         <section className="relative mt-4 pb-6">
