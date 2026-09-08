@@ -36,6 +36,7 @@ export function TimelineNode({ item, align = "center" }: Props) {
   const titleParts = item.title.split(" — ");
   const entity = item.org ?? (titleParts.length > 1 ? titleParts[0] : "Personal milestone");
   const primaryTitle = item.org ? item.title : titleParts.slice(1).join(" — ") || item.title;
+  const isRoot = item.id === "born";
   const toggleOpen = () => {
     if (selection) {
       selection.setOpenId((current) => (current === item.id ? null : item.id));
@@ -73,12 +74,14 @@ export function TimelineNode({ item, align = "center" }: Props) {
             <h3 className="font-display truncate text-base leading-5 font-semibold text-foreground uppercase">
               {primaryTitle}
             </h3>
-            <p className="truncate text-xs leading-4 text-muted-foreground">
-              {entity}
-            </p>
-            <p className="truncate text-[11px] leading-4 tracking-wide text-accent" title={item.tags.join(" ")}>
-              {item.tags.join(" ")}
-            </p>
+            {!isRoot && (item.org || titleParts.length > 1) && (
+              <p className="truncate text-xs leading-4 text-muted-foreground">{entity}</p>
+            )}
+            {!isRoot && item.tags.length > 0 && (
+              <p className="truncate text-[11px] leading-4 tracking-wide text-accent" title={item.tags.join(" ")}>
+                {item.tags.join(" ")}
+              </p>
+            )}
           </div>
         </div>
       </button>
