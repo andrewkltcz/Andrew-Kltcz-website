@@ -77,6 +77,7 @@ function Index() {
             <p className="font-display truncate text-lg leading-none font-bold tracking-[0.14em] uppercase">
               Endre Kulutácz
             </p>
+          </div>
         </div>
       </header>
 
