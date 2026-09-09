@@ -1,7 +1,16 @@
 import { Link } from "@tanstack/react-router";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
 import type { ReactNode } from "react";
 
 import logo from "@/assets/AK_logo_White.png";
+
+const socialLinks = [
+  { label: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/andrewklenhard/" },
+  { label: "LinkedIn", icon: FaLinkedinIn, href: "https://www.linkedin.com/in/endre-kulutacz-89164011/" },
+  { label: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/andrew.unwritten" },
+  { label: "YouTube", icon: FaYoutube, href: "https://www.youtube.com/@andewkltcz/playlists" },
+  { label: "TikTok", icon: FaTiktok, href: "https://www.tiktok.com/@andrew.kltcz" },
+];
 
 export function MainLayout({ children }: { children: ReactNode }) {
   return (
@@ -10,9 +19,6 @@ export function MainLayout({ children }: { children: ReactNode }) {
         <div className="mx-auto flex max-w-6xl flex-col items-center px-4 py-4 sm:px-6">
           <div className="flex flex-col items-center gap-2">
             <img src={logo} alt="AK monogram logo" className="size-12 object-contain" />
-            <p className="font-display text-center text-lg leading-none font-bold tracking-[0.14em] uppercase">
-              Endre Kulutácz
-            </p>
           </div>
           <nav className="mt-5 flex items-center gap-5" aria-label="Primary navigation">
             <Link
@@ -38,8 +44,25 @@ export function MainLayout({ children }: { children: ReactNode }) {
       {children}
 
       <footer className="border-t border-border py-8 text-center">
-        <p className="font-display text-[11px] tracking-[0.3em] text-muted-foreground uppercase">
-          Endre Kulutácz — Professional Path | Creative Path
+        <div className="flex justify-center gap-4" aria-label="Social links">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={social.label}
+              className="text-muted-foreground transition-colors hover:text-accent"
+            >
+              <social.icon className="size-4" aria-hidden="true" />
+            </a>
+          ))}
+        </div>
+        <p className="mt-4 text-xs text-muted-foreground">
+          A personal space for project work, music, and making things.
+        </p>
+        <p className="mt-2 font-display text-[10px] tracking-[0.24em] text-muted-foreground uppercase">
+          Built in 2026 by Endre Kulutácz
         </p>
       </footer>
     </div>

@@ -5,34 +5,31 @@ import photoFour from "@/assets/landing_page/IMG_5092-2.jpg";
 import photoFive from "@/assets/landing_page/_DSC7586-2.jpg";
 
 const CYBER_YELLOW = "#FCD12A";
+const PALETTE_GREY = "#5C6063";
 
 const cells = [
-  { image: photoOne, alt: "Endre Kulutacz creative work" },
+  { image: photoThree, alt: "Endre Kulutacz practicing kendo" },
+  { filler: true, tone: "grey" },
+  { image: photoOne, alt: "Endre Kulutacz by the water" },
   { image: photoTwo, alt: "Endre Kulutacz photography" },
-  { filler: true },
-  { image: photoThree, alt: "Endre Kulutacz visual work" },
+  { image: photoFive, alt: "Endre Kulutacz portrait" },
   { image: photoFour, alt: "Endre Kulutacz music project" },
   { filler: true },
-  { image: photoFive, alt: "Endre Kulutacz creative portrait" },
 ];
 
 export function HexPhotoGrid() {
   return (
     <div className="hex-photo-grid" aria-label="A selection of Endre Kulutacz's creative work">
-      <svg className="absolute size-0" aria-hidden="true" focusable="false">
-        <defs>
-          <clipPath id="rounded-hexagon" clipPathUnits="objectBoundingBox">
-            <path d="M .18 .015 Q .14 .015 .105 .04 L .025 .09 Q 0 .11 0 .15 V .85 Q 0 .89 .025 .91 L .105 .96 Q .14 .985 .18 .985 H .82 Q .86 .985 .895 .96 L .975 .91 Q 1 .89 1 .85 V .15 Q 1 .11 .975 .09 L .895 .04 Q .86 .015 .82 .015 Z" />
-          </clipPath>
-        </defs>
-      </svg>
       {cells.map((cell, index) => (
         <div
           key={cell.filler ? `filler-${index}` : cell.image}
-          className="hex-cell"
+          className={`hex-cell ${cell.filler ? "hex-filler" : "hex-photo"}`}
           style={{
-            clipPath: "url(#rounded-hexagon)",
-            backgroundColor: cell.filler ? CYBER_YELLOW : "rgba(255,255,255,0.78)",
+            backgroundColor: cell.filler
+              ? cell.tone === "grey"
+                ? PALETTE_GREY
+                : CYBER_YELLOW
+              : undefined,
           }}
         >
           {cell.image && (

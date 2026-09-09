@@ -4,20 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
-
 @theme inline {
   --font-display: "Oswald", "Montserrat", sans-serif;
   --font-sans: "Montserrat", sans-serif;
@@ -29,7 +15,6 @@
   --radius-3xl: 0px;
   --radius-4xl: 0px;
   --color-background: var(--background);
-
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -80,8 +65,6 @@
   --muted-foreground: oklch(0.45 0 0);
   --accent: oklch(0.865 0.166 92.5);
   --accent-foreground: oklch(0.29 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.88 0 0);
   --input: oklch(0.88 0 0);
   --ring: oklch(0.865 0.166 92.5);
@@ -115,8 +98,6 @@
   --muted-foreground: oklch(0.78 0 0);
   --accent: oklch(0.865 0.166 92.5);
   --accent-foreground: oklch(0.29 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(1 0 0);
   --border: oklch(1 0 0 / 14%);
   --input: oklch(1 0 0 / 18%);
   --ring: oklch(0.865 0.166 92.5);
@@ -148,27 +129,29 @@
 }
 
 .hex-photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  width: min(100%, 520px);
+  position: relative;
+  width: min(540px, 100%);
+  aspect-ratio: 540 / 448;
+  max-width: 100%;
   margin-inline: auto;
   filter: drop-shadow(0 22px 28px rgb(0 0 0 / 0.35));
-  transform: rotate(-2deg);
 }
 
 .hex-cell {
-  position: relative;
-  aspect-ratio: 0.88;
-  margin: -10px;
-  padding: 4px;
+  position: absolute;
+  width: 27.7778%;
+  height: 38.6607%;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   transition: transform 220ms ease, filter 220ms ease;
 }
 
-.hex-cell:nth-of-type(2),
-.hex-cell:nth-of-type(5),
-.hex-cell:nth-of-type(7) {
-  transform: translateY(22px);
-}
+.hex-cell:nth-of-type(1) { top: 0; left: 14.4444%; }
+.hex-cell:nth-of-type(2) { top: 0; left: 43.3333%; }
+.hex-cell:nth-of-type(3) { top: 30.5804%; left: 0; }
+.hex-cell:nth-of-type(4) { top: 30.5804%; left: 28.8889%; }
+.hex-cell:nth-of-type(5) { top: 30.5804%; left: 57.7778%; }
+.hex-cell:nth-of-type(6) { top: 61.1607%; left: 14.4444%; }
+.hex-cell:nth-of-type(7) { top: 61.1607%; left: 43.3333%; }
 
 .hex-cell:hover {
   z-index: 2;
@@ -176,10 +159,14 @@
   filter: drop-shadow(0 10px 12px rgb(0 0 0 / 0.3));
 }
 
-.hex-cell:nth-of-type(2):hover,
-.hex-cell:nth-of-type(5):hover,
-.hex-cell:nth-of-type(7):hover {
-  transform: translateY(16px) scale(1.045);
+.hex-photo {
+  padding: 3px;
+  background: #ffffff;
+}
+
+.hex-filler {
+  padding: 0;
+  background: #fcd12a;
 }
 
 .hex-cell-image {
@@ -187,22 +174,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  clip-path: inherit;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
 @media (max-width: 639px) {
   .hex-photo-grid {
-    width: min(100%, 430px);
     margin-top: 1rem;
   }
 }
 
-
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
+  * { border-color: var(--color-border); }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
