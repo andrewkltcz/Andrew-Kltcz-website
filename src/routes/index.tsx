@@ -11,8 +11,8 @@ import type { TimelineItem } from "@/data/timeline";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Endre Kulutácz — Two Paths. One Vision." },
-      { property: "og:title", content: "Endre Kulutácz — Two Paths. One Vision." },
+      { title: "Endre Kulutácz — Home" },
+      { property: "og:title", content: "Endre Kulutácz — Home" },
       {
         property: "og:description",
         content:
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Index,
+  component: HomePage,
 });
 
 const byId = (list: TimelineItem[], id: string) => list.find((i) => i.id === id)!;
@@ -236,4 +236,31 @@ export function TimelinePage() {
   );
 }
 
-const Index = TimelinePage;
+function HomePage() {
+  return (
+    <MainLayout>
+      <main className="mx-auto flex min-h-[calc(100vh-210px)] max-w-4xl items-center px-4 py-16 sm:px-6 sm:py-24">
+        <section className="w-full text-center">
+          <span className="mx-auto mb-8 block h-0 w-0 border-x-[14px] border-t-[20px] border-x-transparent border-t-accent" />
+          <h1 className="font-display text-4xl leading-[1.05] font-bold tracking-tight text-foreground uppercase sm:text-6xl">
+            Hello, my name is Endre Kulutácz.
+          </h1>
+          <div className="mx-auto mt-8 max-w-3xl space-y-5 text-left text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p>
+              I'm a guy with <span className="font-semibold text-[#FCD12A]">too many hobbies, too many interests</span> - a true <span className="font-semibold text-[#FCD12A]">Swiss Army knife</span> with a <span className="font-semibold text-[#FCD12A]">W-shaped personality</span>.
+            </p>
+            <p>
+              I have an <span className="font-semibold text-[#FCD12A]">interesting mix of professional experience</span> in project management, AI and automation rollouts, and technical documentation leadership. While off the market, I channel that same energy into my <span className="font-semibold text-[#FCD12A]">musical projects</span> and creative outlets like <span className="font-semibold text-[#FCD12A]">drawing, photography, and videos</span>.
+            </p>
+          </div>
+          <Link
+            to="/cv"
+            className="clip-corner mt-10 inline-flex items-center justify-center bg-[#FCD12A] px-7 py-4 text-sm font-semibold tracking-[0.14em] text-[#2B2B2B] uppercase transition-transform hover:-translate-y-1 hover:bg-[#ffe16a]"
+          >
+            Explore My CV
+          </Link>
+        </section>
+      </main>
+    </MainLayout>
+  );
+}

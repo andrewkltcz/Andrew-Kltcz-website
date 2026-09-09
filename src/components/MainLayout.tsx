@@ -14,11 +14,19 @@ export function MainLayout({ children }: { children: ReactNode }) {
               Endre Kulutácz
             </p>
           </div>
-          <nav className="mt-5" aria-label="Primary navigation">
+          <nav className="mt-5 flex items-center gap-5" aria-label="Primary navigation">
+            <Link
+              to="/"
+              activeOptions={{ exact: true }}
+              className="border-b-2 border-transparent px-3 pb-2 font-display text-xs font-semibold tracking-[0.24em] text-accent uppercase transition-opacity hover:border-accent hover:opacity-80"
+              activeProps={{ "aria-current": "page" }}
+            >
+              Home
+            </Link>
             <Link
               to="/cv"
               activeOptions={{ exact: true }}
-              className="border-b-2 border-accent px-3 pb-2 font-display text-xs font-semibold tracking-[0.24em] text-accent uppercase transition-opacity hover:opacity-80"
+              className="border-b-2 border-transparent px-3 pb-2 font-display text-xs font-semibold tracking-[0.24em] text-accent uppercase transition-opacity hover:border-accent hover:opacity-80"
               activeProps={{ "aria-current": "page" }}
             >
               CV
