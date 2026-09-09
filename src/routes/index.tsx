@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Plane } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
-import logo from "@/assets/AK_logo_White.png";
 import cvFile from "@/assets/CV_ENG_Kulutacz_Endre.pdf";
 import coverLetterFile from "@/assets/Cover_Letter_ENG_Kulutacz_Endre.pdf";
 import { TimelineNode, TimelineSelectionProvider } from "@/components/TimelineNode";
+import { MainLayout } from "@/components/MainLayout";
 import { trunk, professional, creative, convergence } from "@/data/timeline";
 import type { TimelineItem } from "@/data/timeline";
 
@@ -118,24 +118,9 @@ function TimelineMatrix({ rows }: { rows: TimelineRow[] }) {
   );
 }
 
-function Index() {
+export function TimelinePage() {
   return (
-    <div className="dark min-h-screen bg-background font-sans text-foreground">
-      <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
-          <div className="flex min-w-0 items-center gap-3">
-            <img
-              src={logo}
-              alt="AK monogram logo"
-              className="size-10 shrink-0 object-contain"
-            />
-            <p className="font-display truncate text-lg leading-none font-bold tracking-[0.14em] uppercase">
-              Endre Kulutácz
-            </p>
-          </div>
-        </div>
-      </header>
-
+    <MainLayout>
       <TimelineSelectionProvider>
         <main className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
         {/* Hero */}
@@ -154,6 +139,9 @@ function Index() {
             human experience, navigating a professional path through technical writing, AI project
             management, and engineering workflows, running parallel to a life of music, visual arts,
             and media production.
+          </p>
+          <p className="mt-5 text-sm font-semibold text-accent">
+            ✦ Click or tap any milestone to expand and view full details, photos, and links.
           </p>
           <div className="mt-8 flex justify-center gap-2 sm:gap-3" aria-label="Social links">
             {socialLinks.map((social) => (
@@ -244,12 +232,8 @@ function Index() {
         </section>
         </main>
       </TimelineSelectionProvider>
-
-      <footer className="border-t border-border py-8 text-center">
-        <p className="font-display text-[11px] tracking-[0.3em] text-muted-foreground uppercase">
-          Endre Kulutácz — Professional Path | Creative Path
-        </p>
-      </footer>
-    </div>
+    </MainLayout>
   );
 }
+
+const Index = TimelinePage;
