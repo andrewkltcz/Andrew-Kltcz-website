@@ -5,6 +5,7 @@ import cvFile from "@/assets/CV_ENG_Kulutacz_Endre.pdf";
 import coverLetterFile from "@/assets/Cover_Letter_ENG_Kulutacz_Endre.pdf";
 import { TimelineNode, TimelineSelectionProvider } from "@/components/TimelineNode";
 import { MainLayout } from "@/components/MainLayout";
+import { HexPhotoGrid } from "@/components/HexPhotoGrid";
 import { trunk, professional, creative, convergence } from "@/data/timeline";
 import type { TimelineItem } from "@/data/timeline";
 
@@ -239,8 +240,8 @@ export function TimelinePage() {
 function HomePage() {
   return (
     <MainLayout>
-      <main className="mx-auto flex min-h-[calc(100vh-210px)] max-w-4xl items-center px-4 py-16 sm:px-6 sm:py-24">
-        <section className="w-full text-center">
+      <main className="mx-auto grid min-h-[calc(100vh-210px)] max-w-7xl items-center gap-14 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(400px,0.9fr)] lg:gap-16">
+        <section className="w-full text-center lg:text-left">
           <span className="mx-auto mb-8 block h-0 w-0 border-x-[14px] border-t-[20px] border-x-transparent border-t-accent" />
           <h1 className="font-display text-4xl leading-[1.05] font-bold tracking-tight text-foreground uppercase sm:text-6xl">
             Hello, my name is Endre Kulutácz.
@@ -260,6 +261,7 @@ function HomePage() {
             Explore My CV
           </Link>
         </section>
+        <HexPhotoGrid />
       </main>
     </MainLayout>
   );

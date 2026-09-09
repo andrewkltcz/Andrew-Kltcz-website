@@ -147,6 +147,56 @@
   border-top: 12px solid var(--color-accent);
 }
 
+.hex-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(100%, 520px);
+  margin-inline: auto;
+  filter: drop-shadow(0 22px 28px rgb(0 0 0 / 0.35));
+  transform: rotate(-2deg);
+}
+
+.hex-cell {
+  position: relative;
+  aspect-ratio: 0.88;
+  margin: -10px;
+  padding: 4px;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.hex-cell:nth-of-type(2),
+.hex-cell:nth-of-type(5),
+.hex-cell:nth-of-type(7) {
+  transform: translateY(22px);
+}
+
+.hex-cell:hover {
+  z-index: 2;
+  transform: translateY(-6px) scale(1.045);
+  filter: drop-shadow(0 10px 12px rgb(0 0 0 / 0.3));
+}
+
+.hex-cell:nth-of-type(2):hover,
+.hex-cell:nth-of-type(5):hover,
+.hex-cell:nth-of-type(7):hover {
+  transform: translateY(16px) scale(1.045);
+}
+
+.hex-cell-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inherit;
+}
+
+@media (max-width: 639px) {
+  .hex-photo-grid {
+    width: min(100%, 430px);
+    margin-top: 1rem;
+  }
+}
+
 
 @layer base {
   * {
