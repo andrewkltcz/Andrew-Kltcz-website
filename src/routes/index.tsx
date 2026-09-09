@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
 import cvFile from "@/assets/CV_ENG_Kulutacz_Endre.pdf";
-import coverLetterFile from "@/assets/Cover_Letter_ENG_Kulutacz_Endre.pdf";
 import { TimelineNode, TimelineSelectionProvider } from "@/components/TimelineNode";
 import { MainLayout } from "@/components/MainLayout";
 import { HexPhotoGrid } from "@/components/HexPhotoGrid";
@@ -163,13 +162,6 @@ export function TimelinePage() {
               className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
             >
               Download CV
-            </a>
-            <a
-              href={coverLetterFile}
-              download="Cover_Letter_ENG_Kulutacz_Endre.pdf"
-              className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
-            >
-              Download Cover Letter
             </a>
           </div>
         </section>

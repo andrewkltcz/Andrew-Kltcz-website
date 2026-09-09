@@ -125,6 +125,8 @@ export function TimelineNode({ item, align = "center" }: Props) {
                   <a
                     key={l.label}
                     href={l.href}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex items-center gap-1.5 bg-accent px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
                   >
                     <Icons.ArrowUpRight className="size-3.5" />
