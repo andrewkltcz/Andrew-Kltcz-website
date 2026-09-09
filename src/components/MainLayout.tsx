@@ -6,7 +6,7 @@ import logo from "@/assets/AK_logo_White.png";
 export function MainLayout({ children }: { children: ReactNode }) {
   return (
     <div className="dark min-h-screen bg-background font-sans text-foreground">
-      <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
+      <header className="sticky top-0 z-30 border-b border-white/10 bg-[#2B2B2B]/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl flex-col items-center px-4 py-4 sm:px-6">
           <div className="flex flex-col items-center gap-2">
             <img src={logo} alt="AK monogram logo" className="size-12 object-contain" />

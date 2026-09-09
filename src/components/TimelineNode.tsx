@@ -94,7 +94,31 @@ export function TimelineNode({ item, align = "center" }: Props) {
       >
         <div className="overflow-hidden">
           <div className="clip-corner border border-accent/40 bg-popover p-4">
-            <p className="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {item.overview ?? item.description}
+            </p>
+            {item.highlights && item.highlights.length > 0 && (
+              <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                {item.highlights.map((highlight) => (
+                  <li key={highlight} className="flex gap-2">
+                    <span className="mt-2 size-1.5 shrink-0 bg-accent" aria-hidden="true" />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {item.tools && item.tools.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-2" aria-label="Tools and skills">
+                {item.tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="border border-accent/50 px-2 py-1 text-[10px] font-semibold tracking-[0.08em] text-accent uppercase"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            )}
             {item.links && item.links.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-2">
                 {item.links.map((l) => (

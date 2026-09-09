@@ -45,7 +45,7 @@ const upperRows: TimelineRow[] = [
   { label: "2018", creative: [item(creative, "midnight")] },
   { label: "2016", professional: [item(professional, "aleido-coord"), item(professional, "ohb-project")] },
   { label: "2015", professional: [item(professional, "aleido-tw"), item(professional, "morgan-shift"), item(professional, "morgan-rainbow"), item(professional, "morgan-cnc")], creative: [item(creative, "silent-ep"), item(creative, "silent-homes")] },
-  { label: "2013 – 2014", professional: [item(professional, "cnc-course")], creative: [item(creative, "nexus"), item(creative, "hnd-album"), item(creative, "infinity")] },
+  { label: "2013 – 2014", professional: [item(professional, "matro-cnc-shift"), item(professional, "cnc-course")], creative: [item(creative, "nexus"), item(creative, "hnd-album"), item(creative, "infinity")] },
   { label: "2012", creative: [item(creative, "hnd-guitar")] },
 ];
 
