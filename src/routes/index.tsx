@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Plane } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
 import cvFile from "@/assets/CV_ENG_Kulutacz_Endre.pdf";
 import coverLetterFile from "@/assets/Cover_Letter_ENG_Kulutacz_Endre.pdf";
@@ -89,7 +88,6 @@ function ColumnHeading({ label, side }: { label: string; side: "left" | "right" 
 function TimelineMatrix({ rows }: { rows: TimelineRow[] }) {
   return (
     <div className="relative">
-      <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-accent/45" />
       <div className="relative">
         {rows.map((row, rowIndex) => (
           <div
@@ -176,61 +174,50 @@ export function TimelinePage() {
           </div>
         </section>
 
-        {/* Unified chronological matrix — present to 2018 */}
-        <section className="mt-4">
-          <div className="grid grid-cols-2 gap-3 sm:gap-6">
-            <ColumnHeading label="Professional Path" side="left" />
-            <ColumnHeading label="Creative Path" side="right" />
-          </div>
-          <TimelineMatrix rows={upperRecentRows} />
-          <TimelineMatrix rows={[rejoinedAleidoRow]} />
-        </section>
+        <div className="relative">
+          <div className="pointer-events-none absolute inset-y-0 left-1/2 z-0 w-px -translate-x-1/2 bg-accent/45" />
 
-        {/* Convergence bridge — 2017 Wales */}
-        <section className="relative mt-12">
-          <div className="clip-corner border-2 border-accent bg-accent/10 p-6 shadow-[0_0_60px_-20px_var(--color-accent)] sm:p-8">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="grid size-10 shrink-0 place-items-center bg-accent text-accent-foreground">
-                <Plane className="size-5" />
-              </span>
-              <div className="min-w-0">
-                <p className="font-display text-xs tracking-[0.28em] text-accent">
-                  {convergence.date}
-                </p>
-                <h2 className="font-display text-xl leading-tight font-bold uppercase sm:text-2xl">
-                  {convergence.title}
-                </h2>
-                <p className="text-xs text-muted-foreground">{convergence.org}</p>
-              </div>
+          {/* Unified chronological matrix — present to 2018 */}
+          <section className="relative z-10 mt-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-6">
+              <ColumnHeading label="Professional Path" side="left" />
+              <ColumnHeading label="Creative Path" side="right" />
             </div>
-          </div>
-        </section>
+            <TimelineMatrix rows={upperRecentRows} />
+            <TimelineMatrix rows={[rejoinedAleidoRow]} />
+          </section>
 
-        {/* Unified chronological matrix — 2017 to 2013 */}
-        <section className="mt-6">
-          <TimelineMatrix rows={[thyKeeperRow]} />
-          <TimelineMatrix rows={upperEarlyRows} />
-        </section>
+          {/* Convergence milestone — 2017 Wales */}
+          <section className="relative z-10 mt-12">
+            <div className="mx-auto max-w-2xl">
+              <TimelineNode item={convergence} />
+            </div>
+          </section>
 
-        {/* Common university node */}
-        <section className="relative mt-10">
-          <div className="relative mx-auto max-w-2xl before:absolute before:-top-10 before:bottom-1/2 before:left-1/2 before:w-px before:-translate-x-1/2 before:bg-accent/45">
-            <div className="relative z-10">
+          {/* Unified chronological matrix — 2017 to 2013 */}
+          <section className="relative z-10 mt-6">
+            <TimelineMatrix rows={[thyKeeperRow]} />
+            <TimelineMatrix rows={upperEarlyRows} />
+          </section>
+
+          {/* Common university node */}
+          <section className="relative z-10 mt-10">
+            <div className="mx-auto max-w-2xl">
               <TimelineNode item={university} />
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Unified chronological matrix — 2010 to 1998 */}
-        <section className="relative mt-10 pb-6">
-          <TimelineMatrix rows={lowerRows} />
-        </section>
+          {/* Unified chronological matrix — 2010 to 1998 */}
+          <section className="relative z-10 mt-10 pb-6">
+            <TimelineMatrix rows={lowerRows} />
+          </section>
 
-        <section className="relative mt-4 pb-6">
-          <div className="mx-auto max-w-md">
-            <TimelineNode item={byId(trunk, "born")} />
-          </div>
-        </section>
+          <section className="relative z-10 mt-4 pb-6">
+            <div className="mx-auto max-w-md">
+              <TimelineNode item={byId(trunk, "born")} />
+            </div>
+          </section>
+        </div>
         </main>
       </TimelineSelectionProvider>
     </MainLayout>
