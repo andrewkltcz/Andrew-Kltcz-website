@@ -159,7 +159,7 @@ function PhotographyPage() {
           </p>
         </section>
         <section className="mt-16" aria-label="Photography gallery">
-          <div className="mb-6 flex items-end justify-between border-b border-[#FCD12A]/40 pb-3">
+          <div className="mb-6 flex flex-col items-start gap-3 border-b border-[#FCD12A]/40 pb-3 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="font-display text-2xl font-semibold tracking-wide text-[#FCD12A] uppercase sm:text-3xl">
               Selected Frames
             </h2>
