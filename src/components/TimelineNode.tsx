@@ -130,18 +130,21 @@ export function TimelineNode({ item, align = "center" }: Props) {
             )}
             {item.links && item.links.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-2">
-                {item.links.map((l) => (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 bg-accent px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
-                  >
-                    {l.icon ? <span className="grid size-3.5 place-items-center"><brandIcons[l.icon] className="size-3.5" aria-hidden="true" /></span> : <Icons.ArrowUpRight className="size-3.5" />}
-                    {l.label}
-                  </a>
-                ))}
+                {item.links.map((l) => {
+                  const BrandIcon = l.icon ? brandIcons[l.icon] : null;
+                  return (
+                    <a
+                      key={l.label}
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 bg-accent px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
+                    >
+                      {BrandIcon ? <span className="grid size-3.5 place-items-center"><BrandIcon className="size-3.5" aria-hidden="true" /></span> : <Icons.ArrowUpRight className="size-3.5" />}
+                      {l.label}
+                    </a>
+                  );
+                })}
               </div>
             )}
           </div>
