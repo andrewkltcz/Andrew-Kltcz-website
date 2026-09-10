@@ -37,10 +37,11 @@ type TimelineRow = {
 const item = (list: TimelineItem[], id: string) => byId(list, id);
 
 const upperRows: TimelineRow[] = [
-  { label: "2026", professional: [item(professional, "sigma")], creative: [item(creative, "primal")] },
+  { label: "2026", professional: [item(professional, "open-to-adventures"), item(professional, "sigma")], creative: [item(creative, "gaijin-kitsune"), item(creative, "primal")] },
   { label: "2023 – 2025", professional: [item(professional, "mondi-presales")], creative: [item(creative, "odyssey")] },
   { label: "2022", creative: [item(creative, "soulharbour"), item(creative, "ak11")] },
   { label: "2020", professional: [item(professional, "mondi-lead"), item(professional, "mondi-tw")], creative: [item(creative, "youtube")] },
+  { label: "2019", creative: [item(creative, "ak-media")] },
   { label: "2018", creative: [item(creative, "midnight")] },
   { label: "2016", professional: [item(professional, "aleido-coord"), item(professional, "ohb-project")] },
   { label: "2015", professional: [item(professional, "aleido-tw"), item(professional, "morgan-shift"), item(professional, "morgan-rainbow"), item(professional, "morgan-cnc")], creative: [item(creative, "silent-ep"), item(creative, "silent-homes")] },

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, type Dispatch, type ReactNode, type SetStateAction } from "react";
 import * as Icons from "lucide-react";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
 import type { TimelineItem } from "@/data/timeline";
 import { cn } from "@/lib/utils";
 
@@ -7,6 +8,14 @@ function NodeIcon({ name, className }: { name: string; className?: string }) {
   const Comp = (Icons as unknown as Record<string, Icons.LucideIcon>)[name] ?? Icons.Circle;
   return <Comp className={className} strokeWidth={2.2} />;
 }
+
+const brandIcons = {
+  facebook: FaFacebookF,
+  instagram: FaInstagram,
+  linkedin: FaLinkedinIn,
+  tiktok: FaTiktok,
+  youtube: FaYoutube,
+};
 
 type Props = {
   item: TimelineItem;
@@ -129,7 +138,7 @@ export function TimelineNode({ item, align = "center" }: Props) {
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 bg-accent px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
                   >
-                    <Icons.ArrowUpRight className="size-3.5" />
+                    {l.icon ? <span className="grid size-3.5 place-items-center"><brandIcons[l.icon] className="size-3.5" aria-hidden="true" /></span> : <Icons.ArrowUpRight className="size-3.5" />}
                     {l.label}
                   </a>
                 ))}
