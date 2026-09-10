@@ -37,6 +37,46 @@ export function MainLayout({ children }: { children: ReactNode }) {
             >
               CV
             </Link>
+            <Link
+              to="/photography"
+              activeOptions={{ exact: true }}
+              className="border-b-2 border-transparent px-3 pb-2 font-display text-xs font-semibold tracking-[0.24em] text-accent uppercase transition-opacity hover:border-accent hover:opacity-80"
+              activeProps={{ "aria-current": "page" }}
+            >
+              Photography
+            </Link>
+            <Link
+              to="/videography"
+              activeOptions={{ exact: true }}
+              className="border-b-2 border-transparent px-3 pb-2 font-display text-xs font-semibold tracking-[0.24em] text-accent uppercase transition-opacity hover:border-accent hover:opacity-80"
+              activeProps={{ "aria-current": "page" }}
+            >
+              Videography
+            </Link>
+            <Link
+              to="/art"
+              activeOptions={{ exact: true }}
+              className="border-b-2 border-transparent px-3 pb-2 font-display text-xs font-semibold tracking-[0.24em] text-accent uppercase transition-opacity hover:border-accent hover:opacity-80"
+              activeProps={{ "aria-current": "page" }}
+            >
+              Art
+            </Link>
+            <Link
+              to="/gaijin-kitsune"
+              activeOptions={{ exact: true }}
+              className="border-b-2 border-transparent px-3 pb-2 font-display text-xs font-semibold tracking-[0.24em] text-accent uppercase transition-opacity hover:border-accent hover:opacity-80"
+              activeProps={{ "aria-current": "page" }}
+            >
+              Gaijin Kitsune
+            </Link>
+            <Link
+              to="/music"
+              activeOptions={{ exact: true }}
+              className="border-b-2 border-transparent px-3 pb-2 font-display text-xs font-semibold tracking-[0.24em] text-accent uppercase transition-opacity hover:border-accent hover:opacity-80"
+              activeProps={{ "aria-current": "page" }}
+            >
+              Music
+            </Link>
           </nav>
         </div>
       </header>
@@ -62,7 +102,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
           A personal space for project work, music, and making things.
         </p>
         <p className="mt-2 font-display text-[10px] tracking-[0.24em] text-muted-foreground uppercase">
-          Built in 2026 by Endre Kulutácz
+          Built in 2026 by Andrew Kltcz
         </p>
       </footer>
     </div>

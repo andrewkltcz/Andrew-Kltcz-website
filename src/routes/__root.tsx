@@ -73,13 +73,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Endre Kulutácz — Dual Timeline Portfolio" },
+      { title: "Andrew Kltcz — Dual Timeline Portfolio" },
       {
         name: "description",
         content:
-          "Project management, creativity and technology — an interactive dual timeline of Endre Kulutácz's professional and creative career.",
+          "Project management, creativity and technology — an interactive dual timeline of Andrew Kltcz's professional and creative career.",
       },
-      { name: "author", content: "Endre Kulutácz" },
+      { name: "author", content: "Andrew Kltcz" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

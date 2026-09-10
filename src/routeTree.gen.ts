@@ -10,11 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArtRouteImport } from './routes/art'
 import { Route as CvRouteImport } from './routes/cv'
+import { Route as GaijinKitsuneRouteImport } from './routes/gaijin-kitsune'
+import { Route as MusicRouteImport } from './routes/music'
+import { Route as PhotographyRouteImport } from './routes/photography'
+import { Route as VideographyRouteImport } from './routes/videography'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtRoute = ArtRouteImport.update({
+  id: '/art',
+  path: '/art',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CvRoute = CvRouteImport.update({
@@ -22,31 +32,93 @@ const CvRoute = CvRouteImport.update({
   path: '/cv',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GaijinKitsuneRoute = GaijinKitsuneRouteImport.update({
+  id: '/gaijin-kitsune',
+  path: '/gaijin-kitsune',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MusicRoute = MusicRouteImport.update({
+  id: '/music',
+  path: '/music',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhotographyRoute = PhotographyRouteImport.update({
+  id: '/photography',
+  path: '/photography',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideographyRoute = VideographyRouteImport.update({
+  id: '/videography',
+  path: '/videography',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/art': typeof ArtRoute
   '/cv': typeof CvRoute
+  '/gaijin-kitsune': typeof GaijinKitsuneRoute
+  '/music': typeof MusicRoute
+  '/photography': typeof PhotographyRoute
+  '/videography': typeof VideographyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/art': typeof ArtRoute
   '/cv': typeof CvRoute
+  '/gaijin-kitsune': typeof GaijinKitsuneRoute
+  '/music': typeof MusicRoute
+  '/photography': typeof PhotographyRoute
+  '/videography': typeof VideographyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/art': typeof ArtRoute
   '/cv': typeof CvRoute
+  '/gaijin-kitsune': typeof GaijinKitsuneRoute
+  '/music': typeof MusicRoute
+  '/photography': typeof PhotographyRoute
+  '/videography': typeof VideographyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cv'
+  fullPaths:
+    | '/'
+    | '/art'
+    | '/cv'
+    | '/gaijin-kitsune'
+    | '/music'
+    | '/photography'
+    | '/videography'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cv'
-  id: '__root__' | '/' | '/cv'
+  to:
+    | '/'
+    | '/art'
+    | '/cv'
+    | '/gaijin-kitsune'
+    | '/music'
+    | '/photography'
+    | '/videography'
+  id:
+    | '__root__'
+    | '/'
+    | '/art'
+    | '/cv'
+    | '/gaijin-kitsune'
+    | '/music'
+    | '/photography'
+    | '/videography'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArtRoute: typeof ArtRoute
   CvRoute: typeof CvRoute
+  GaijinKitsuneRoute: typeof GaijinKitsuneRoute
+  MusicRoute: typeof MusicRoute
+  PhotographyRoute: typeof PhotographyRoute
+  VideographyRoute: typeof VideographyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +130,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/art': {
+      id: '/art'
+      path: '/art'
+      fullPath: '/art'
+      preLoaderRoute: typeof ArtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cv': {
       id: '/cv'
       path: '/cv'
@@ -65,12 +144,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CvRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gaijin-kitsune': {
+      id: '/gaijin-kitsune'
+      path: '/gaijin-kitsune'
+      fullPath: '/gaijin-kitsune'
+      preLoaderRoute: typeof GaijinKitsuneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/music': {
+      id: '/music'
+      path: '/music'
+      fullPath: '/music'
+      preLoaderRoute: typeof MusicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/photography': {
+      id: '/photography'
+      path: '/photography'
+      fullPath: '/photography'
+      preLoaderRoute: typeof PhotographyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/videography': {
+      id: '/videography'
+      path: '/videography'
+      fullPath: '/videography'
+      preLoaderRoute: typeof VideographyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArtRoute: ArtRoute,
   CvRoute: CvRoute,
+  GaijinKitsuneRoute: GaijinKitsuneRoute,
+  MusicRoute: MusicRoute,
+  PhotographyRoute: PhotographyRoute,
+  VideographyRoute: VideographyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

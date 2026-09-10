@@ -4,7 +4,7 @@ import { TimelinePage } from "./index";
 
 export const Route = createFileRoute("/cv")({
   head: () => ({
-    meta: [{ title: "Endre Kulutácz — CV" }],
+    meta: [{ title: "Andrew Kltcz — CV" }],
   }),
   component: TimelinePage,
 });

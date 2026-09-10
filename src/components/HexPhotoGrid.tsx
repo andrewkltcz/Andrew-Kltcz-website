@@ -8,18 +8,18 @@ const CYBER_YELLOW = "#FCD12A";
 const PALETTE_GREY = "#5C6063";
 
 const cells = [
-  { image: photoThree, alt: "Endre Kulutacz practicing kendo" },
+  { image: photoThree, alt: "Andrew Kltcz practicing kendo" },
   { filler: true, tone: "grey" },
-  { image: photoOne, alt: "Endre Kulutacz by the water" },
-  { image: photoTwo, alt: "Endre Kulutacz photography" },
-  { image: photoFive, alt: "Endre Kulutacz portrait" },
-  { image: photoFour, alt: "Endre Kulutacz music project" },
+  { image: photoOne, alt: "Andrew Kltcz by the water" },
+  { image: photoTwo, alt: "Andrew Kltcz photography" },
+  { image: photoFive, alt: "Andrew Kltcz portrait" },
+  { image: photoFour, alt: "Andrew Kltcz music project" },
   { filler: true },
 ];
 
 export function HexPhotoGrid() {
   return (
-    <div className="hex-photo-grid" aria-label="A selection of Endre Kulutacz's creative work">
+    <div className="hex-photo-grid" aria-label="A selection of Andrew Kltcz's creative work">
       {cells.map((cell, index) => (
         <div
           key={cell.filler ? `filler-${index}` : cell.image}
@@ -33,7 +33,7 @@ export function HexPhotoGrid() {
           }}
         >
           {cell.image && (
-            <img src={cell.image} alt={cell.alt} className="hex-cell-image" />
+            <img src={cell.image} alt={cell.alt} width="180" height="180" decoding="async" className="hex-cell-image" />
           )}
         </div>
       ))}

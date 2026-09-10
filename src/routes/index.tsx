@@ -10,8 +10,8 @@ import type { TimelineItem } from "@/data/timeline";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Endre Kulutácz — Home" },
-      { property: "og:title", content: "Endre Kulutácz — Home" },
+      { title: "Andrew Kltcz — Home" },
+      { property: "og:title", content: "Andrew Kltcz — Home" },
       {
         property: "og:description",
         content:
@@ -140,22 +140,8 @@ export function TimelinePage() {
             and media production.
           </p>
           <p className="mt-5 text-sm font-semibold text-accent">
-            ✦ Click or tap any milestone to expand and view full details, photos, and links.
+            ✦ Click or tap any milestone to expand and view full details and links.
           </p>
-          <div className="mt-8 flex justify-center gap-2 sm:gap-3" aria-label="Social links">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={social.label}
-                className="group grid size-10 place-items-center border border-border text-muted-foreground transition-all hover:-translate-y-1 hover:border-accent hover:text-accent hover:shadow-[0_0_18px_-6px_var(--color-accent)]"
-              >
-                <social.icon className="size-4.5 transition-transform group-hover:scale-110" aria-hidden="true" />
-              </a>
-            ))}
-          </div>
           <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href={cvFile}
@@ -163,6 +149,14 @@ export function TimelinePage() {
               className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
             >
               Download CV
+            </a>
+            <a
+              href="https://www.linkedin.com/in/endre-kulutacz-89164011/"
+              target="_blank"
+              rel="noreferrer"
+              className="clip-corner inline-flex min-w-48 items-center justify-center border border-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent uppercase transition-transform hover:-translate-y-0.5 hover:bg-accent hover:text-accent-foreground"
+            >
+              Connect on LinkedIn
             </a>
           </div>
         </section>
@@ -224,14 +218,28 @@ function HomePage() {
         <section className="w-full text-center lg:text-left">
           <span className="mx-auto mb-8 block h-0 w-0 border-x-[14px] border-t-[20px] border-x-transparent border-t-accent" />
           <h1 className="font-display text-4xl leading-[1.05] font-bold tracking-tight text-foreground uppercase sm:text-6xl">
-            Hello, my name is Endre Kulutácz.
+            Hello, I&apos;m Endre Kulutacz.
           </h1>
-          <div className="mx-auto mt-8 max-w-3xl space-y-5 text-left text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <div className="mt-6 flex justify-center gap-2 sm:gap-3 lg:justify-start" aria-label="Social links">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.label}
+                className="group grid size-10 place-items-center border border-border text-muted-foreground transition-all hover:-translate-y-1 hover:border-accent hover:text-accent hover:shadow-[0_0_18px_-6px_var(--color-accent)]"
+              >
+                <social.icon className="size-4.5 transition-transform group-hover:scale-110" aria-hidden="true" />
+              </a>
+            ))}
+          </div>
+          <div className="mx-auto mt-8 max-w-3xl space-y-5 text-justify text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
-              I'm a guy with <span className="font-semibold text-[#FCD12A]">too many hobbies, too many interests</span> - a true <span className="font-semibold text-[#FCD12A]">Swiss Army knife</span> with a <span className="font-semibold text-[#FCD12A]">W-shaped personality</span>.
+              I&apos;m also known as <span className="font-semibold text-[#FCD12A]">Andrew Kltcz</span>. I&apos;m a guy with <span className="font-semibold text-[#FCD12A]">too many hobbies, too many interests</span>. A true <span className="font-semibold text-[#FCD12A]">Swiss Army knife</span>. A <span className="font-semibold text-[#FCD12A]">W-shaped personality</span> as they call it.
             </p>
             <p>
-              I have an <span className="font-semibold text-[#FCD12A]">interesting mix of professional experience</span> in project management, AI and automation rollouts, and technical documentation leadership. While off the market, I channel that same energy into my <span className="font-semibold text-[#FCD12A]">musical projects</span> and creative outlets like <span className="font-semibold text-[#FCD12A]">drawing, photography, and videos</span>.
+              I have an <span className="font-semibold text-[#FCD12A]">interesting mix of professional experience</span> in project management, AI and automation rollouts, and technical documentation leadership. While off the market, I channel that same energy into my <Link to="/music" className="font-semibold text-[#FCD12A] underline underline-offset-4">musical projects</Link> and creative outlets like <Link to="/art" className="font-semibold text-[#FCD12A] underline underline-offset-4">drawing</Link>, <Link to="/photography" className="font-semibold text-[#FCD12A] underline underline-offset-4">photography</Link>, and <Link to="/videography" className="font-semibold text-[#FCD12A] underline underline-offset-4">videos</Link>.
             </p>
           </div>
           <Link
