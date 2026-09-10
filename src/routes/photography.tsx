@@ -69,7 +69,7 @@ function PhotographyPage() {
   return (
     <MainLayout>
       <main className="mx-auto min-h-[calc(100vh-210px)] w-full max-w-[1400px] px-4 py-12 sm:px-8 sm:py-16 lg:px-14">
-        <header className="mb-6 pb-4">
+        <header className="mb-8 border-b border-white/10 pb-8">
           <p className="mb-3 font-display text-xs tracking-[0.3em] text-[#FCD12A] uppercase">
             Creative Work
           </p>
@@ -81,54 +81,6 @@ function PhotographyPage() {
             frames.
           </p>
         </header>
-        <section
-          className="mb-8 border-y border-white/10 py-4"
-          aria-label="Photography tools and equipment"
-        >
-          <p className="mb-2 text-center font-display text-[10px] tracking-[0.3em] text-white/45 uppercase">
-            Tools of the craft
-          </p>
-          <div className="grid grid-cols-2 items-center gap-y-6 text-center sm:grid-cols-3 lg:grid-cols-6">
-            <img
-              src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobelightroom.svg"
-              alt="Adobe Lightroom"
-              loading="lazy"
-              width="32"
-              height="32"
-              className="mx-auto size-8 object-contain brightness-0 invert"
-            />
-            <img
-              src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobephotoshop.svg"
-              alt="Adobe Photoshop"
-              loading="lazy"
-              width="32"
-              height="32"
-              className="mx-auto size-8 object-contain brightness-0 invert"
-            />
-            <img
-              src="https://cdn.simpleicons.org/sony/E0E0E0"
-              alt="Sony"
-              loading="lazy"
-              width="96"
-              height="32"
-              className="mx-auto h-8 w-auto max-w-[96px] object-contain"
-            />
-            <span className="font-display text-sm font-bold tracking-[0.18em] text-[#E0E0E0]">
-              TAMRON
-            </span>
-            <img
-              src="https://cdn.simpleicons.org/dji/E0E0E0"
-              alt="DJI"
-              loading="lazy"
-              width="72"
-              height="32"
-              className="mx-auto h-8 w-auto max-w-[72px] object-contain"
-            />
-            <span className="font-display text-sm font-semibold tracking-[0.08em] text-[#E0E0E0]">
-              PGYTECH
-            </span>
-          </div>
-        </section>
         <section className="w-full text-justify text-[15px] leading-[1.7] text-[#E0E0E0] [&>p]:mb-6 [&>p:last-child]:mb-0">
           <p>
             I received my first compact Canon digital camera around 2006, and I immediately fell in

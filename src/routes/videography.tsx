@@ -79,7 +79,7 @@ function VideographyPage() {
   return (
     <MainLayout>
       <main className="mx-auto min-h-[calc(100vh-210px)] w-full max-w-[1400px] px-4 py-12 sm:px-8 sm:py-16 lg:px-14">
-        <header className="mb-6 pb-4">
+        <header className="mb-8 border-b border-white/10 pb-8">
           <p className="mb-3 font-display text-xs tracking-[0.3em] text-[#FCD12A] uppercase">
             Creative Work
           </p>
@@ -90,56 +90,6 @@ function VideographyPage() {
             Every motion has a story.
           </p>
         </header>
-        <section
-          className="mb-8 border-y border-white/10 py-4"
-          aria-label="Videography tools and equipment"
-        >
-          <p className="mb-2 text-center font-display text-[10px] tracking-[0.3em] text-white/45 uppercase">
-            Tools of the craft
-          </p>
-          <div className="grid grid-cols-2 items-center gap-y-6 text-center sm:grid-cols-3 lg:grid-cols-5">
-            <img
-              src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobepremierepro.svg"
-              alt="Adobe Premiere Pro"
-              loading="lazy"
-              width="32"
-              height="32"
-              className="mx-auto size-8 object-contain brightness-0 invert"
-            />
-            <img
-              src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/davinciresolve.svg"
-              alt="DaVinci Resolve"
-              loading="lazy"
-              width="32"
-              height="32"
-              className="mx-auto size-8 object-contain brightness-0 invert"
-            />
-            <img
-              src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/adobeaftereffects.svg"
-              alt="Adobe After Effects"
-              loading="lazy"
-              width="32"
-              height="32"
-              className="mx-auto size-8 object-contain brightness-0 invert"
-            />
-            <img
-              src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/blender.svg"
-              alt="Blender"
-              loading="lazy"
-              width="32"
-              height="32"
-              className="mx-auto size-8 object-contain brightness-0 invert"
-            />
-            <img
-              src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/sony.svg"
-              alt="Sony"
-              loading="lazy"
-              width="32"
-              height="32"
-              className="mx-auto size-8 object-contain brightness-0 invert"
-            />
-          </div>
-        </section>
         <section className="w-full text-justify text-[15px] leading-[1.7] text-[#E0E0E0] [&>p]:mb-6 [&>p:last-child]:mb-0">
           <p>
             If I could choose any dream career in the world, I would be a film director or a video
