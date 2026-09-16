@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
-import cvFile from "@/assets/CV_ENG_Kulutacz_Endre.pdf";
+import creativeCvFile from "@/assets/Endre_Kulutacz_Creative_CV_ENG.pdf";
+import pmCvFile from "@/assets/Endre_Kulutacz_PM_CV_Eng.pdf";
+import twCvFile from "@/assets/Endre_Kulutacz_TW_PM_CV_ENG.pdf";
 import { TimelineNode, TimelineSelectionProvider } from "@/components/TimelineNode";
 import { MainLayout } from "@/components/MainLayout";
 import { HexPhotoGrid } from "@/components/HexPhotoGrid";
@@ -60,8 +62,8 @@ const lowerRows: TimelineRow[] = [
   { label: "1998", creative: [item(creative, "drawing")] },
 ];
 
-const upperRecentRows = upperRows.slice(0, 5);
-const upperEarlyRows = upperRows.slice(5);
+const upperRecentRows = upperRows.slice(0, 6);
+const upperEarlyRows = upperRows.slice(6);
 const rejoinedAleidoRow: TimelineRow = { label: "2017", professional: [item(professional, "aleido-return")] };
 const thyKeeperRow: TimelineRow = { label: "2017", creative: [item(creative, "thy-keeper")] };
 
@@ -142,14 +144,7 @@ export function TimelinePage() {
           <p className="mt-5 text-sm font-semibold text-accent">
             ✦ Click or tap any milestone to expand and view full details and links.
           </p>
-          <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={cvFile}
-              download="CV_ENG_Kulutacz_Endre.pdf"
-              className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
-            >
-              Download CV
-            </a>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
             <a
               href="https://www.linkedin.com/in/endre-kulutacz-89164011/"
               target="_blank"
@@ -157,6 +152,27 @@ export function TimelinePage() {
               className="clip-corner inline-flex min-w-48 items-center justify-center border border-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent uppercase transition-transform hover:-translate-y-0.5 hover:bg-accent hover:text-accent-foreground"
             >
               Connect on LinkedIn
+            </a>
+            <a
+              href={creativeCvFile}
+              download="Endre_Kulutacz_Creative_CV_ENG.pdf"
+              className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
+            >
+              Creative CV
+            </a>
+            <a
+              href={pmCvFile}
+              download="Endre_Kulutacz_PM_CV_Eng.pdf"
+              className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
+            >
+              PM CV
+            </a>
+            <a
+              href={twCvFile}
+              download="Endre_Kulutacz_TW_PM_CV_ENG.pdf"
+              className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
+            >
+              TW CV
             </a>
           </div>
         </section>
