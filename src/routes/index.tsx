@@ -1,8 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
-import creativeCvFile from "@/assets/Endre_Kulutacz_Creative_CV_ENG.pdf";
-import pmCvFile from "@/assets/Endre_Kulutacz_PM_CV_Eng.pdf";
-import twCvFile from "@/assets/Endre_Kulutacz_TW_PM_CV_ENG.pdf";
 import { TimelineNode, TimelineSelectionProvider } from "@/components/TimelineNode";
 import { MainLayout } from "@/components/MainLayout";
 import { HexPhotoGrid } from "@/components/HexPhotoGrid";
@@ -153,27 +150,6 @@ export function TimelinePage() {
             >
               Connect on LinkedIn
             </a>
-            <a
-              href={creativeCvFile}
-              download="Endre_Kulutacz_Creative_CV_ENG.pdf"
-              className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
-            >
-              Creative CV
-            </a>
-            <a
-              href={pmCvFile}
-              download="Endre_Kulutacz_PM_CV_Eng.pdf"
-              className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
-            >
-              PM CV
-            </a>
-            <a
-              href={twCvFile}
-              download="Endre_Kulutacz_TW_PM_CV_ENG.pdf"
-              className="clip-corner inline-flex min-w-48 items-center justify-center bg-accent px-5 py-3 text-xs font-semibold tracking-[0.14em] text-accent-foreground uppercase transition-transform hover:-translate-y-0.5"
-            >
-              TW CV
-            </a>
           </div>
         </section>
 
@@ -234,7 +210,7 @@ function HomePage() {
         <section className="w-full text-center lg:text-left">
           <span className="mx-auto mb-8 block h-0 w-0 border-x-[14px] border-t-[20px] border-x-transparent border-t-accent" />
           <h1 className="font-display text-4xl leading-[1.05] font-bold tracking-tight text-foreground uppercase sm:text-6xl">
-            Hello, I&apos;m Endre Kulutacz.
+            Hello, my name is Endre Kulutacz.
           </h1>
           <div className="mt-6 flex justify-center gap-2 sm:gap-3 lg:justify-start" aria-label="Social links">
             {socialLinks.map((social) => (
@@ -252,18 +228,12 @@ function HomePage() {
           </div>
           <div className="mx-auto mt-8 max-w-3xl space-y-5 text-justify text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
-              I&apos;m also known as <span className="font-semibold text-[#FCD12A]">Andrew Kltcz</span>. I&apos;m a guy with <span className="font-semibold text-[#FCD12A]">too many hobbies, too many interests</span>. A true <span className="font-semibold text-[#FCD12A]">Swiss Army knife</span>. A <span className="font-semibold text-[#FCD12A]">W-shaped personality</span> as they call it.
+              I&apos;m also known as <span className="font-semibold text-[#FCD12A]">Andrew Kltcz</span>. A guy with <span className="font-semibold text-[#FCD12A]">too many hobbies and creative interests</span>. A true <span className="font-semibold text-[#FCD12A]">Swiss Army knife of zero commercial value</span>. A self-proclaimed <em className="font-semibold text-[#FCD12A]">Mediocrates</em>, if you will.
             </p>
             <p>
-              I have an <span className="font-semibold text-[#FCD12A]">interesting mix of professional experience</span> in project management, AI and automation rollouts, and technical documentation leadership. While off the market, I channel that same energy into my <Link to="/music" className="font-semibold text-[#FCD12A] underline underline-offset-4">musical projects</Link> and creative outlets like <Link to="/art" className="font-semibold text-[#FCD12A] underline underline-offset-4">drawing</Link>, <Link to="/photography" className="font-semibold text-[#FCD12A] underline underline-offset-4">photography</Link>, and <Link to="/videography" className="font-semibold text-[#FCD12A] underline underline-offset-4">videos</Link>.
+              This site isn&apos;t a portfolio to sell you anything; it&apos;s just a personal gallery of my stuff. When I&apos;m not doing life, I channel my energy into creative outlets like <Link to="/music" className="font-semibold text-[#FCD12A] underline underline-offset-4">music</Link>, <Link to="/photography" className="font-semibold text-[#FCD12A] underline underline-offset-4">photography</Link>, <Link to="/videography" className="font-semibold text-[#FCD12A] underline underline-offset-4">videos</Link>, and <Link to="/art" className="font-semibold text-[#FCD12A] underline underline-offset-4">drawing</Link>. Just passion, fun, and a lot of dabbling.
             </p>
           </div>
-          <Link
-            to="/cv"
-            className="clip-corner mt-10 inline-flex items-center justify-center bg-[#FCD12A] px-7 py-4 text-sm font-semibold tracking-[0.14em] text-[#2B2B2B] uppercase transition-transform hover:-translate-y-1 hover:bg-[#ffe16a]"
-          >
-            Explore My CV
-          </Link>
         </section>
         <HexPhotoGrid />
       </main>

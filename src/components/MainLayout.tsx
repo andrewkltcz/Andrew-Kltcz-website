@@ -123,7 +123,7 @@ export function MainLayout({ children }: { children: ReactNode }) {
           ))}
         </div>
         <p className="mt-4 text-xs text-muted-foreground">
-          A personal space for project work, music, and making things.
+          A personal space for art, music, and making things.
         </p>
         <p className="mt-2 font-display text-[10px] tracking-[0.24em] text-muted-foreground uppercase">
           Built in 2026 by Andrew Kltcz
